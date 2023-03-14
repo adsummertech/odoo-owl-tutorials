@@ -9,9 +9,10 @@ import { Playground } from "./playground";
 //
 // In the mount options, it's also possible to add other interresting
 // configuration: https://github.com/odoo/owl/blob/master/doc/reference/app.md#configuration
-import { templates } from "@web/core/assets";
-owl.whenReady( () => {
-    mount(Playground, document.body, { templates, dev: true });
+import { templates } from "@web/core/assets"
+owl.whenReady(() => {
+    const config = { templates, dev: true }
+    mount(Playground, document.body, config)
 });
 
 
@@ -22,7 +23,7 @@ owl.whenReady( () => {
  */
 function logError(ev) {
     ev.preventDefault();
-    let error = ev ?.error || ev.reason;
+    let error = ev?.error || ev.reason;
 
     if (error.seen) {
         // If an error causes the mount to crash, Owl will reject the mount promise and throw the
@@ -30,7 +31,7 @@ function logError(ev) {
         return;
     }
     error.seen = true;
-
+    console.error(error)
     let errorMessage = error.stack;
     while (error.cause) {
         errorMessage += "\nCaused by: "
@@ -40,5 +41,5 @@ function logError(ev) {
     console.error(errorMessage);
 }
 
-browser.addEventListener("error", (ev) => {logError(ev)});
-browser.addEventListener("unhandledrejection", (ev) => {logError(ev)});
+browser.addEventListener("error", (ev) => { logError(ev) });
+browser.addEventListener("unhandledrejection", (ev) => { logError(ev) });

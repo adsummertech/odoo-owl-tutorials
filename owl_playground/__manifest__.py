@@ -44,7 +44,9 @@
             'web/static/src/core/browser/browser.js',
             'web/static/src/core/registry.js',
             'web/static/src/core/assets.js',
+
+            # Our files
             'owl_playground/static/src/**/*',
-        ],
+        ]
     }
 }
