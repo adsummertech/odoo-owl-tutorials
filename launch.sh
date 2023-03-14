@@ -2,7 +2,7 @@
 
 ADDONS="awesome_gallery,awesome_tshirt,owl_playground"
 DBNAME="tutorialsdb"
-odoo --addons-path=",." -d "$DBNAME" -i "$ADDONS" -u "$ADDONS" --dev xml --workers 0
+odoo --addons-path="." -d "$DBNAME" -i "$ADDONS" -u "$ADDONS" --dev xml --workers 0
 
 #reload
 
